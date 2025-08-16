@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NDN Sanierung – Kontakt</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container header-grid">
+    <nav class="nav">
+      <a href="index.html" data-nav="start">Start</a>
+      <a href="leistungen.html" data-nav="leistungen">Leistungen</a>
+      <a href="kontakt.html" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <a href="index.html" class="brand"><span class="brand-dot"></span>NDN Sanierung</a>
+    <div class="header-right">
+      <a href="tel:+49" class="btn-red">Anrufen</a>
+    </div>
+  </div>
+</header>
+
+
+  <main>
+    <section class="section">
+      <div class="container" style="padding:32px 0 8px; text-align:center;">
+        <h2>Kontakt</h2>
+        <div class="midline"></div>
+        <p class="small" style="margin-top:12px;">Erreichbarkeit: Mo–Fr 09:00–17:00 (nach Vereinbarung)</p>
+      </div>
+
+      <div class="container" style="padding: 8px 0 40px;">
+        <form class="contact-form" style="max-width: 560px; margin: 0 auto;" action="https://formspree.io/f/xgvzqjew" method="POST">
+          <div style="display:grid; gap:12px;">
+            <input name="name" placeholder="Ihr Name" required />
+            <input type="email" name="email" placeholder="Ihre E-Mail" required />
+            <input name="subject" placeholder="Betreff" />
+            <textarea rows="6" name="message" placeholder="Ihre Nachricht"></textarea>
+          </div>
+          <div style="display:flex; justify-content:center; margin-top:14px;">
+            <button type="submit" class="btn-red">Nachricht senden</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="small">© <span id="year"></span> NDN Sanierung. Alle Rechte vorbehalten.</div>
+    <div class="footer-actions">
+      <button id="btn-light" class="btn-ghost">Light</button>
+      <button id="btn-dark"  class="btn-ghost">Dark</button>
+      <a href="impressum.html" class="btn-ghost">Impressum & Datenschutz</a>
+    </div>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+<script src="src/js/common.js"></script>
+
+</body>
+</html>

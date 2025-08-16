@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NDN Sanierung – Impressum</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container header-grid">
+    <nav class="nav">
+      <a href="index.html" data-nav="start">Start</a>
+      <a href="leistungen.html" data-nav="leistungen">Leistungen</a>
+      <a href="kontakt.html" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <a href="index.html" class="brand"><span class="brand-dot"></span>NDN Sanierung</a>
+    <div class="header-right">
+      <a href="tel:+49" class="btn-red">Anrufen</a>
+    </div>
+  </div>
+</header>
+
+
+  <main>
+    <section class="section">
+      <div class="container" style="padding:32px 0 24px; text-align:center;">
+        <h2>Impressum</h2>
+        <div class="midline"></div>
+      </div>
+
+      <div class="container" style="padding-bottom: 40px;">
+        <div class="line-list">
+          <div class="line-item">
+            <div class="line-title">Verantwortlich</div>
+            <div class="line-desc">NDN Sanierung, Endertstraße ···, 56812 Cochem</div>
+          </div>
+          <div class="line-item">
+            <div className="line-title">Kontakt</div>
+            <div className="line-desc">(auf Anfrage)</div>
+          </div>
+        </div>
+
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer; font-weight:600; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #7f1d1d;">Datenschutzerklärung (Kurzfassung)</summary>
+          <div class="small" style="margin-top:8px; opacity:.9; display:grid; gap:8px;">
+            <p>Verarbeitung nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b/f DSGVO). Keine Weitergabe an Dritte zu Marketingzwecken.</p>
+            <p>Speicherdauer: bis Zweckerreichung / gesetzliche Aufbewahrung. Rechte: Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Beschwerde.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="small">© <span id="year"></span> NDN Sanierung. Alle Rechte vorbehalten.</div>
+    <div class="footer-actions">
+      <button id="btn-light" class="btn-ghost">Light</button>
+      <button id="btn-dark"  class="btn-ghost">Dark</button>
+      <a href="impressum.html" class="btn-ghost">Impressum & Datenschutz</a>
+    </div>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+<script src="src/js/common.js"></script>
+
+</body>
+</html>
