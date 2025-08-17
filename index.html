@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NDN Sanierung – Start</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container header-grid">
+    <nav class="nav">
+      <a href="index.html" data-nav="start">Start</a>
+      <a href="leistungen.html" data-nav="leistungen">Leistungen</a>
+      <a href="kontakt.html" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <a href="index.html" class="brand"><span class="brand-dot"></span>NDN Sanierung</a>
+    <div class="header-right">
+      <a href="tel:+49" class="btn-red">Anrufen</a>
+    </div>
+  </div>
+</header>
+
+
+  <main><!-- Hero video header with fallback -->
+    <section class="hero">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop">
+        <source src="https://videos.pexels.com/video-files/4790700/4790700-uhd_4096_2160_24fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/856989/856989-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" alt="Sanierung Fallback" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="container hero-inner">
+        <div>
+          <h1>Sicher. Sauber. Zuverlässig.<br><span style="color:#a11a1a">Asbest- &amp; Schadstoffsanierung nach TRGS.</span></h1>
+          <p>Fachgerechte Sanierung – bundesweit &amp; international.</p>
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-red" href="tel:+49">Jetzt kostenlos beraten lassen</a>
+            <a class="btn-ghost" href="leistungen.html">Leistungen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Abgeschlossene Projekte -->
+    <section class="section section-projects" aria-label="Abgeschlossene Projekte">
+      <div class="container centered" style="padding:48px 0;">
+        <h2>Abgeschlossene Projekte</h2>
+        <div class="midline"></div>
+        <div class="grid-3" style="margin-top:24px;">
+          <div class="card"><div class="card-hd">Bildungseinrichtung</div><div class="card-bd small">Sanierung von Asbestfassadenplatten, Freimessung bestanden.</div></div>
+          <div class="card"><div class="card-hd">Mehrfamilienhaus</div><div class="card-bd small">Entfernung Floor-Flex & asbesthaltiger Kleber.</div></div>
+          <div class="card"><div class="card-hd">Industriehalle</div><div class="card-bd small">Demontage asbesthaltiger Rohrisolierungen & Lüftungskanäle.</div></div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- Referenzen -->
+    <section class="section section-refs" aria-label="Referenzen">
+      <div class="container centered" style="padding:48px 0 8px;">
+        <h2 class="h2">Referenzen (Auszug)</h2>
+        <p class="muted">Nachweise & Freimessungen stellen wir Ihnen auf Anfrage gerne bereit.</p>
+        <div class="grid-3" style="margin-top:24px;">
+          <div class="card ref-card">
+            <div class="card-hd">Öffentliche Bildungseinrichtung</div>
+            <div class="card-bd small">Asbestsanierung von Fassadenplatten (TRGS-konform), Freimessung bestanden.</div>
+          </div>
+          <div class="card ref-card">
+            <div class="card-hd">Mehrfamilienhaus (1960er Bestand)</div>
+            <div class="card-bd small">Entfernung von Floor-Flex und asbesthaltigen Klebern, staubarme Verfahren.</div>
+          </div>
+          <div class="card ref-card">
+            <div class="card-hd">Industriehalle</div>
+            <div class="card-bd small">Demontage asbesthaltiger Rohrisolierungen & Lüftungskanäle, fachgerechte Entsorgung.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Map -->
+    <section class="section">
+      <div class="container" style="padding: 32px 0 48px">
+        <div class="midline"></div>
+        <div style="margin-top:16px; border:1px solid rgba(255,255,255,.1); border-radius:12px; overflow:hidden;">
+          <iframe title="NDN Sanierung – Lage" src="https://www.google.com/maps?q=Endertstraße, 56812 Cochem&output=embed"
+            width="100%" height="420" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+  
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="small">© <span id="year"></span> NDN Sanierung. Alle Rechte vorbehalten.</div>
+    <div class="footer-actions">
+      <button id="btn-light" class="btn-ghost">Light</button>
+      <button id="btn-dark"  class="btn-ghost">Dark</button>
+      <a href="impressum.html" class="btn-ghost">Impressum & Datenschutz</a>
+    </div>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+<script src="src/js/common.js"></script>
+
+</body>
+</html>
