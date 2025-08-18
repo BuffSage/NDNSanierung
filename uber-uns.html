@@ -7,16 +7,6 @@
   <link rel="icon" href="/src/assets/logo.png">
   <link rel="stylesheet" href="/src/styles.css">
   <style>
-    /* Simple on-load reveal + better spacing without extra JS */
-    @keyframes slideUpFade {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; animation: slideUpFade 600ms ease both; }
-    .reveal:nth-child(1) { animation-delay: 0ms; }
-    .reveal:nth-child(2) { animation-delay: 120ms; }
-    .reveal:nth-child(3) { animation-delay: 240ms; }
-
     .about-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
     @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
 
@@ -52,9 +42,9 @@
       <div class="logo-text">NDN Sanierung</div>
     </a>
     <nav class="desktop-nav">
-      <a href="/leistungen.html">Leistungen</a>
-      <a href="/uber-uns.html">Über Uns</a>
-      <a href="/kontakt.html">Kontakt</a>
+      <a data-i18n="nav.services" href="/leistungen.html">Leistungen</a>
+      <a data-i18n="nav.about" href="/uber-uns.html">Über Uns</a>
+      <a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a>
     </nav>
     <div class="actions">
       <button id="langToggle" class="btn" aria-label="Sprache wechseln">DE</button>
@@ -65,16 +55,16 @@
     </div>
   </div>
   <nav class="mobile-nav" id="mobileNav">
-      <a href="/leistungen.html">Leistungen</a>
-      <a href="/uber-uns.html">Über Uns</a>
-      <a href="/kontakt.html">Kontakt</a>
+      <a data-i18n="nav.services" href="/leistungen.html">Leistungen</a>
+      <a data-i18n="nav.about" href="/uber-uns.html">Über Uns</a>
+      <a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a>
   </nav>
 </header>
 
 <main class="page center-page">
   <section class="container">
     <div class="content-header reveal">
-      <h1>Über Uns</h1>
+      <h1 data-i18n="about.title">Über Uns</h1>
       <hr class="red-line">
     </div>
 
@@ -111,31 +101,31 @@
   </section>
 </main>
 
-<footer class="app-footer">
+<footer class="app-footer reveal">
   <div class="container footer-grid">
     <div>
-      <h4>Navigation</h4>
+      <h4 data-i18n="footer.nav_title">Navigation</h4>
       <ul>
-        <li><a href="/leistungen.html">Leistungen</a></li>
-        <li><a href="/uber-uns.html">Über Uns</a></li>
-        <li><a href="/kontakt.html">Kontakt</a></li>
+        <li><a data-i18n="nav.services" href="/leistungen.html">Leistungen</a></li>
+        <li><a data-i18n="nav.about" href="/uber-uns.html">Über Uns</a></li>
+        <li><a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a></li>
       </ul>
     </div>
     <div>
-      <h4>Kontakt</h4>
+      <h4 data-i18n="footer.contact_title">Kontakt</h4>
       <p>Telefon: <a href="tel:+492671000000">+49 2671 000000</a></p>
       <p>E-Mail: <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a></p>
-      <p>Adresse: Endertstraße 1, 56812 Cochem</p>
+      <p>Adresse: <span class="address">Endertstraße 1, 56812 Cochem</span></p>
     </div>
     <div>
-      <h4>Rechtliches</h4>
+      <h4 data-i18n="footer.legal_title">Rechtliches</h4>
       <ul>
-        <li><a href="/impressum.html">Impressum</a></li>
-        <li><a href="/datenschutz.html">Datenschutz</a></li>
+        <li><a data-i18n="footer.imprint" href="/impressum.html">Impressum</a></li>
+        <li><a data-i18n="footer.privacy" href="/datenschutz.html">Datenschutz</a></li>
       </ul>
     </div>
   </div>
-  <div class="container rights">© NDN Sanierung. Alle Rechte vorbehalten.</div>
+  <div class="container rights" data-i18n="footer.rights">© 2024 NDN Sanierung. Alle Rechte vorbehalten.</div>
 </footer>
 
 <script src="/src/js/main.js"></script>
