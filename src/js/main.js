@@ -253,11 +253,15 @@
       const carousel = $('#asbestCarousel');
       if (!carousel) return;
 
+      const assetBase = window.location.pathname.includes('/en/')
+        ? '../src/assets/'
+        : 'src/assets/';
+
       const images = [
-        '/src/assets/asbest1.png',
-        '/src/assets/asbest2.png',
-        '/src/assets/asbest3.png',
-        '/src/assets/asbest4.png',
+        assetBase + 'asbest1.png',
+        assetBase + 'asbest2.png',
+        assetBase + 'asbest3.png',
+        assetBase + 'asbest4.png',
       ];
 
       let idx = 0;
