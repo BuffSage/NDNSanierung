@@ -1,7 +1,0 @@
----
-deployment:
-  tasks:
-    - export GIT_WORK_TREE=/home/yondevco/NDNSanierung.de
-    - export GIT_DIR=/home/yondevco/NDNSanierung.de/.git
-    - git reset --hard
-    - git pull origin main
