@@ -302,8 +302,7 @@ var s = (r, l) => E(r, "name", {
       }), c.appendChild(t);
     };
     s(e, "render");
-    var f = ["https://images.unsplash.com/photo-1621905252507-b3c699df93d3?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1581092446337-23c3b036c1d0?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1551893623-1135b671f6a1?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1600783936237-7a5f5582a954?auto=format&fit=crop&w=1400&q=80"],
-      o = 0;
+    var p=location.pathname.split("/").slice(1,-1),p=p.length?p.map(function(){return".."}).join("/"):".";var f=["asbest1.png","asbest2.png","asbest3.png","asbest4.png"].map(function(a){return p+"/src/assets/"+a}),o=0;
     e(), setInterval(function () {
       o = (o + 1) % f.length;
       var t = d(".slide", c);

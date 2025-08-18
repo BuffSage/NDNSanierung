@@ -253,12 +253,11 @@
       const carousel = $('#asbestCarousel');
       if (!carousel) return;
 
-      const images = [
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-      ];
+      const depth = window.location.pathname.split('/').slice(1, -1).length;
+      const base = depth ? '../'.repeat(depth) : './';
+      const images = ['asbest1.png', 'asbest2.png', 'asbest3.png', 'asbest4.png'].map(
+        (n) => `${base}src/assets/${n}`
+      );
 
       let idx = 0;
       let timer;

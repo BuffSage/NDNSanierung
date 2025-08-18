@@ -314,8 +314,7 @@ var s = (r, l) => E(r, "name", {
       }), c.appendChild(t);
     };
     s(e, "render");
-    var f = ["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII="],
-      o = 0;
+    var p=location.pathname.split("/").slice(1,-1),p=p.length?p.map(function(){return".."}).join("/"):".";var f=["asbest1.png","asbest2.png","asbest3.png","asbest4.png"].map(function(a){return p+"/src/assets/"+a}),o=0;
     e(), setInterval(function () {
       o = (o + 1) % f.length;
       var t = d(".slide", c);
