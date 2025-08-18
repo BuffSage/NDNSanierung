@@ -16,20 +16,20 @@
     .reveal:nth-child(1) { animation-delay: 0ms; }
     .reveal:nth-child(2) { animation-delay: 120ms; }
     .reveal:nth-child(3) { animation-delay: 240ms; }
-    .reveal:nth-child(4) { animation-delay: 360ms; }
-    .about-grid {
-      display: grid; gap: 24px;
-      grid-template-columns: 1fr; 
-    }
-    @media (min-width: 900px) {
-      .about-grid { grid-template-columns: 1fr 1fr; }
-    }
+
+    .about-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+
     .about-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px;
     }
+
+    /* >>> Tight bullets so text sits right next to bullets (no extra left spacing) <<< */
+    .bullet-tight { list-style: disc inside; padding-left: 0; margin: 0; }
+    .bullet-tight li { margin: 4px 0; line-height: 1.35; text-indent: 0; }
   </style>
   <script>
     (function(){
@@ -53,7 +53,7 @@
     </a>
     <nav class="desktop-nav">
       <a href="/leistungen.html">Leistungen</a>
-      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/uber-uns.html">Über Uns</a>
       <a href="/kontakt.html">Kontakt</a>
     </nav>
     <div class="actions">
@@ -66,7 +66,7 @@
   </div>
   <nav class="mobile-nav" id="mobileNav">
       <a href="/leistungen.html">Leistungen</a>
-      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/uber-uns.html">Über Uns</a>
       <a href="/kontakt.html">Kontakt</a>
   </nav>
 </header>
@@ -88,7 +88,8 @@
       <div class="about-card reveal">
         <h2>Warum NDN?</h2>
         <hr class="red-line">
-        <ul>
+        <!-- Tight, aligned bullets -->
+        <ul class="bullet-tight">
           <li>Zertifiziert nach TRGS 519</li>
           <li>Staubarme Verfahren &amp; Unterdruckhaltung</li>
           <li>Eigener Entsorgungsnachweis &amp; lückenlose Dokumentation</li>
@@ -116,13 +117,12 @@
       <h4>Navigation</h4>
       <ul>
         <li><a href="/leistungen.html">Leistungen</a></li>
-        <li><a href="/ueber-uns.html">Über Uns</a></li>
+        <li><a href="/uber-uns.html">Über Uns</a></li>
         <li><a href="/kontakt.html">Kontakt</a></li>
       </ul>
     </div>
     <div>
       <h4>Kontakt</h4>
-      <!-- Same contact info as Kontakt page -->
       <p>Telefon: <a href="tel:+492671000000">+49 2671 000000</a></p>
       <p>E-Mail: <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a></p>
       <p>Adresse: Endertstraße 1, 56812 Cochem</p>
@@ -135,7 +135,7 @@
       </ul>
     </div>
   </div>
-  <div class="container rights">© 2024 NDN Sanierung. Alle Rechte vorbehalten.</div>
+  <div class="container rights">© NDN Sanierung. Alle Rechte vorbehalten.</div>
 </footer>
 
 <script src="/src/js/main.js"></script>
