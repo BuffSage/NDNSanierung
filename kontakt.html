@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDN Sanierung – Kontakt</title>
+  <link rel="icon" href="/src/assets/logo.png">
+  <link rel="stylesheet" href="/src/styles.css">
+  <script>
+    (function(){
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        var theme = storedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.className = theme;
+        var storedLang = localStorage.getItem('lang');
+        var lang = storedLang || 'de';
+        document.documentElement.setAttribute('lang', lang);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+<header class="app-header">
+  <div class="container navbar">
+    <a href="/index.html" class="logo">
+      <img class="logo-img" src="/src/assets/logo.png" alt="NDN Logo">
+      <div class="logo-text">NDN Sanierung</div>
+    </a>
+    <nav class="desktop-nav">
+      <a href="/leistungen.html">Leistungen</a>
+      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/kontakt.html">Kontakt</a>
+    </nav>
+    <div class="actions">
+      <button id="langToggle" class="btn" aria-label="Sprache wechseln">DE</button>
+      <button id="themeToggle" class="btn" aria-label="Theme wechseln">☀︎/☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+      <a href="/leistungen.html">Leistungen</a>
+      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<main class="page center-page">
+  <section class="container">
+    <div class="content-header">
+      <h1>Kontakt</h1>
+      <hr class="red-line">
+    </div>
+
+    <p><strong>Adresse:</strong>
+      <!-- TODO: replace with exact address -->
+      Endertstraße 1, 56812 Cochem
+    </p>
+    <p><strong>Telefon:</strong>
+      <!-- TODO: replace with exact phone -->
+      <a href="tel:+492671000000">+49 2671 000000</a>
+    </p>
+    <p><strong>E-Mail:</strong>
+      <!-- TODO: replace with exact email -->
+      <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a>
+    </p>
+
+    <div class="contact-form-wrap">
+      <!-- Formspree wired exactly as requested -->
+      <form class="contact-form" action="https://formspree.io/f/xgvzqjew" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>
+          <span>Nachricht</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <!-- Optional: subject + honeypot -->
+        <input type="hidden" name="_subject" value="Neue Nachricht über ndn-sanierung.de">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button class="btn primary" type="submit">Senden</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/leistungen.html">Leistungen</a></li>
+        <li><a href="/ueber-uns.html">Über Uns</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>Telefon: <a href="tel:+492671000000">+49 2671 000000</a></p>
+      <p>E-Mail: <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a></p>
+      <p>Adresse: Endertstraße 1, 56812 Cochem</p>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="/impressum.html">Impressum</a></li>
+        <li><a href="/datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container rights">© 2024 NDN Sanierung. Alle Rechte vorbehalten.</div>
+</footer>
+
+<script src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDN Sanierung – Über Uns</title>
+  <link rel="icon" href="/src/assets/logo.png">
+  <link rel="stylesheet" href="/src/styles.css">
+  <style>
+    /* Simple on-load reveal + better spacing without extra JS */
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; animation: slideUpFade 600ms ease both; }
+    .reveal:nth-child(1) { animation-delay: 0ms; }
+    .reveal:nth-child(2) { animation-delay: 120ms; }
+    .reveal:nth-child(3) { animation-delay: 240ms; }
+    .reveal:nth-child(4) { animation-delay: 360ms; }
+    .about-grid {
+      display: grid; gap: 24px;
+      grid-template-columns: 1fr; 
+    }
+    @media (min-width: 900px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+  </style>
+  <script>
+    (function(){
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        var theme = storedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.className = theme;
+        var storedLang = localStorage.getItem('lang');
+        var lang = storedLang || 'de';
+        document.documentElement.setAttribute('lang', lang);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+<header class="app-header">
+  <div class="container navbar">
+    <a href="/index.html" class="logo">
+      <img class="logo-img" src="/src/assets/logo.png" alt="NDN Logo">
+      <div class="logo-text">NDN Sanierung</div>
+    </a>
+    <nav class="desktop-nav">
+      <a href="/leistungen.html">Leistungen</a>
+      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/kontakt.html">Kontakt</a>
+    </nav>
+    <div class="actions">
+      <button id="langToggle" class="btn" aria-label="Sprache wechseln">DE</button>
+      <button id="themeToggle" class="btn" aria-label="Theme wechseln">☀︎/☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+      <a href="/leistungen.html">Leistungen</a>
+      <a href="/ueber-uns.html">Über Uns</a>
+      <a href="/kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<main class="page center-page">
+  <section class="container">
+    <div class="content-header reveal">
+      <h1>Über Uns</h1>
+      <hr class="red-line">
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h2>Unsere Mission</h2>
+        <hr class="red-line">
+        <p>Wir sanieren Schadstoffe sicher, effizient und transparent – mit klarer Kommunikation und dokumentierten Prozessen.</p>
+      </div>
+
+      <div class="about-card reveal">
+        <h2>Warum NDN?</h2>
+        <hr class="red-line">
+        <ul>
+          <li>Zertifiziert nach TRGS 519</li>
+          <li>Staubarme Verfahren &amp; Unterdruckhaltung</li>
+          <li>Eigener Entsorgungsnachweis &amp; lückenlose Dokumentation</li>
+          <li>Termintreu und sauber – vom Aufmaß bis zur Übergabe</li>
+        </ul>
+      </div>
+
+      <div class="about-card reveal" style="grid-column: 1 / -1;">
+        <h2>Ablauf</h2>
+        <hr class="red-line">
+        <ol style="display:inline-block;text-align:left;margin:0">
+          <li>Kostenlose Erstberatung &amp; Besichtigung</li>
+          <li>Sanierungsplan inkl. Schutzmaßnahmen</li>
+          <li>Fachgerechte Ausführung &amp; Entsorgung</li>
+          <li>Reinigung, Freigabe &amp; Dokumentation</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/leistungen.html">Leistungen</a></li>
+        <li><a href="/ueber-uns.html">Über Uns</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <!-- Same contact info as Kontakt page -->
+      <p>Telefon: <a href="tel:+492671000000">+49 2671 000000</a></p>
+      <p>E-Mail: <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a></p>
+      <p>Adresse: Endertstraße 1, 56812 Cochem</p>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="/impressum.html">Impressum</a></li>
+        <li><a href="/datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container rights">© 2024 NDN Sanierung. Alle Rechte vorbehalten.</div>
+</footer>
+
+<script src="/src/js/main.js"></script>
+</body>
+</html>

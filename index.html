@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDN Sanierung</title>
+  <link rel="icon" href="/src/assets/logo.png">
+  <link rel="stylesheet" href="/src/styles.css">
+  <script>
+    (function(){
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        var theme = storedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.className = theme;
+        var storedLang = localStorage.getItem('lang');
+        var lang = storedLang || 'de';
+        document.documentElement.setAttribute('lang', lang);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+<header class="app-header">
+  <div class="container navbar">
+    <a href="/index.html" class="logo">
+      <img class="logo-img" src="/src/assets/logo.png" alt="NDN Logo">
+      <div class="logo-text">NDN Sanierung</div>
+    </a>
+    <nav class="desktop-nav">
+      <a data-i18n="nav.services" href="/leistungen.html">Leistungen</a>
+      <a data-i18n="nav.about" href="/ueber-uns.html">Über Uns</a>
+      <a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a>
+    </nav>
+    <div class="actions">
+      <button id="langToggle" class="btn" aria-label="Sprache wechseln">DE</button>
+      <button id="themeToggle" class="btn" aria-label="Theme wechseln">☀︎/☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+      <a data-i18n="nav.services" href="/leistungen.html">Leistungen</a>
+      <a data-i18n="nav.about" href="/ueber-uns.html">Über Uns</a>
+      <a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a>
+  </nav>
+</header>
+<main class="page">
+
+<section class="hero header-hero">
+  <div class="container hero-inner">
+    <h1>NDN Sanierung</h1>
+    <p data-i18n="home.tagline">Asbest- und Schadstoffsanierung mit Zertifizierung (TRGS 519). Sicher. Schnell. Fachgerecht.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="/leistungen.html" data-i18n="home.cta_services">Zu den Leistungen</a>
+      <a class="btn" href="/kontakt.html" data-i18n="home.cta_contact">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+<section class="container features">
+  <div class="card"><h3>TRGS 519</h3><p data-i18n="home.point1">Asbestsanierung gemäß TRGS 519.</p></div>
+  <div class="card"><h3 data-i18n="home.point2_title">Schnell vor Ort</h3><p data-i18n="home.point2">Flexible Terminvereinbarung.</p></div>
+  <div class="card"><h3 data-i18n="home.point3_title">Erfahrung</h3><p data-i18n="home.point3">Qualifiziertes Fachpersonal.</p></div>
+</section>
+
+
+<section class="container">
+  <div class="content-header">
+    <h2 data-i18n="home.map_title">Anfahrt & Karte</h2>
+    <hr class="red-line">
+  </div>
+    <div class="map-wrap">
+  <iframe id="mapEmbed"
+    title="NDN Sanierung Karte"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=Endertstra%C3%9Fe%201,%2056812%20Cochem%20DE&output=embed">
+  </iframe>
+</div>
+
+</section>
+
+</main>
+<footer class="app-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4 data-i18n="footer.nav_title">Navigation</h4>
+      <ul>
+        <li><a data-i18n="nav.services" href="/leistungen.html">Leistungen</a></li>
+        <li><a data-i18n="nav.about" href="/ueber-uns.html">Über Uns</a></li>
+        <li><a data-i18n="nav.contact" href="/kontakt.html">Kontakt</a></li>
+              <li><a data-i18n="footer.privacy" href="/datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer.contact_title">Kontakt</h4>
+      <p>Telefon: <a href="tel:+491234567890">+49 123 456 7890</a></p>
+      <p>E-Mail: <a href="mailto:info@ndn-sanierung.de">info@ndn-sanierung.de</a></p>
+      <p>Adresse: Endertstraße 1, 56812 Cochem</p>
+    </div>
+    <div>
+      <h4 data-i18n="footer.legal_title">Rechtliches</h4>
+      <ul>
+        <li><a data-i18n="footer.imprint" href="/impressum.html">Impressum</a></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container rights" data-i18n="footer.rights">© 2024 NDN Sanierung. Alle Rechte vorbehalten.</div>
+</footer>
+<script src="/src/js/main.js"></script>
+</body>
+</html>
