@@ -182,85 +182,168 @@
     });
   }
 
-  function initCookieBanner() {
-    try {
-      if (localStorage.getItem('cookieAccepted')) return;
-    } catch (_) {}
-    const banner = document.createElement('div');
-    banner.className = 'cookie-banner';
-    const msg = document.createElement('p');
-    msg.textContent =
-      currentLang() === 'de'
-        ? 'Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern.'
-        : 'This website uses cookies to enhance your experience.';
-    const btn = document.createElement('button');
-    btn.className = 'btn primary';
-    btn.textContent = 'OK';
-    btn.addEventListener('click', () => {
-      banner.remove();
+    function initCookieConsent() {
       try {
-        localStorage.setItem('cookieAccepted', 'yes');
+        if (localStorage.getItem('cookieConsent')) return;
       } catch (_) {}
-    });
-    banner.appendChild(msg);
-    banner.appendChild(btn);
-    document.body.appendChild(banner);
-  }
 
-  function initGallery() {
-    const carousel = $('#asbestCarousel');
-    if (!carousel) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'cookie-modal';
+      overlay.innerHTML = `
+        <div class="cookie-box">
+          <h2>${currentLang() === 'de' ? 'Cookie-Einstellungen' : 'Cookie Settings'}</h2>
+          <p>${
+            currentLang() === 'de'
+              ? 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern.'
+              : 'We use cookies to improve your experience.'
+          }</p>
+          <div class="cookie-options">
+            <label><input type="checkbox" data-key="essential" checked disabled> ${
+              currentLang() === 'de' ? 'Notwendig' : 'Essential'
+            }</label>
+            <label><input type="checkbox" data-key="analytics"> ${
+              currentLang() === 'de' ? 'Statistik' : 'Analytics'
+            }</label>
+            <label><input type="checkbox" data-key="marketing"> ${
+              currentLang() === 'de' ? 'Marketing' : 'Marketing'
+            }</label>
+          </div>
+          <div class="cookie-actions">
+            <button class="btn" id="cookieSave">${
+              currentLang() === 'de' ? 'Speichern' : 'Save'
+            }</button>
+            <button class="btn primary" id="cookieAccept">${
+              currentLang() === 'de' ? 'Alle akzeptieren' : 'Accept all'
+            }</button>
+          </div>
+        </div>
+      `;
 
-    const images = [
-      'https://images.unsplash.com/photo-1621905252507-b3c699df93d3?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1581092446337-23c3b036c1d0?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1551893623-1135b671f6a1?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1600783936237-7a5f5582a954?auto=format&fit=crop&w=1400&q=80',
-    ];
+      function storeConsent(consent) {
+        try {
+          localStorage.setItem('cookieConsent', JSON.stringify(consent));
+        } catch (_) {}
+        overlay.remove();
+      }
 
-    let idx = 0;
-
-    function render() {
-      // rebuild slides+ dots (kept simple + robust)
-      carousel.innerHTML = '';
-      images.forEach((src, i) => {
-        const slide = document.createElement('div');
-        slide.className = 'slide' + (i === idx ? ' active' : '');
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt =
-          (currentLang() === 'de' ? 'Asbest Galerie Bild ' : 'Asbestos gallery image ') +
-          (i + 1);
-        slide.appendChild(img);
-        carousel.appendChild(slide);
-      });
-      const dots = document.createElement('div');
-      dots.className = 'dots';
-      images.forEach((_, i) => {
-        const b = document.createElement('button');
-        b.className = 'dot' + (i === idx ? ' active' : '');
-        b.setAttribute(
-          'aria-label',
-          (currentLang() === 'de' ? 'Bild ' : 'Slide ') + (i + 1)
-        );
-        b.addEventListener('click', () => {
-          idx = i;
-          render();
+      overlay
+        .querySelector('#cookieAccept')
+        .addEventListener('click', () => {
+          storeConsent({ essential: true, analytics: true, marketing: true });
         });
-        dots.appendChild(b);
-      });
-      carousel.appendChild(dots);
+
+      overlay
+        .querySelector('#cookieSave')
+        .addEventListener('click', () => {
+          const consent = { essential: true };
+          overlay
+            .querySelectorAll('.cookie-options input')
+            .forEach((input) => {
+              if (!input.disabled) {
+                consent[input.dataset.key] = input.checked;
+              }
+            });
+          storeConsent(consent);
+        });
+
+      document.body.appendChild(overlay);
     }
 
-    render();
+    function initGallery() {
+      const carousel = $('#asbestCarousel');
+      if (!carousel) return;
 
-    setInterval(() => {
-      idx = (idx + 1) % images.length;
-      const slides = $$('.slide', carousel);
-      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-      $$('.dot', carousel).forEach((d, i) => d.classList.toggle('active', i === idx));
-    }, 3000);
-  }
+      const images = [
+        '/src/assets/asbest1.png',
+        '/src/assets/asbest2.png',
+        '/src/assets/asbest3.png',
+        '/src/assets/asbest4.png',
+      ];
+
+      let idx = 0;
+      let timer;
+
+      function render() {
+        carousel.innerHTML = '';
+        images.forEach((src, i) => {
+          const slide = document.createElement('div');
+          slide.className = 'slide' + (i === idx ? ' active' : '');
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt =
+            (currentLang() === 'de' ? 'Asbest Galerie Bild ' : 'Asbestos gallery image ') +
+            (i + 1);
+          slide.appendChild(img);
+          carousel.appendChild(slide);
+        });
+        const navPrev = document.createElement('button');
+        navPrev.className = 'arrow prev';
+        navPrev.innerHTML = '&#10094;';
+        navPrev.addEventListener('click', () => {
+          idx = (idx - 1 + images.length) % images.length;
+          update();
+        });
+        const navNext = document.createElement('button');
+        navNext.className = 'arrow next';
+        navNext.innerHTML = '&#10095;';
+        navNext.addEventListener('click', () => {
+          idx = (idx + 1) % images.length;
+          update();
+        });
+        carousel.appendChild(navPrev);
+        carousel.appendChild(navNext);
+
+        const dots = document.createElement('div');
+        dots.className = 'dots';
+        images.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.className = 'dot' + (i === idx ? ' active' : '');
+          b.setAttribute(
+            'aria-label',
+            (currentLang() === 'de' ? 'Bild ' : 'Slide ') + (i + 1)
+          );
+          b.addEventListener('click', () => {
+            idx = i;
+            update();
+          });
+          dots.appendChild(b);
+        });
+        carousel.appendChild(dots);
+      }
+
+      function update() {
+        const slides = $$('.slide', carousel);
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        $$('.dot', carousel).forEach((d, i) => d.classList.toggle('active', i === idx));
+        clearInterval(timer);
+        timer = setInterval(() => {
+          idx = (idx + 1) % images.length;
+          update();
+        }, 3000);
+      }
+
+      render();
+      update();
+    }
+
+    function initCardAnimations() {
+      const cards = $$('.features .card');
+      if (!cards.length) return;
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      cards.forEach((card, i) => {
+        card.style.setProperty('--slide-from', i % 2 === 0 ? '-40px' : '40px');
+        io.observe(card);
+      });
+    }
 
   function init() {
     // language (also updates footer year)
@@ -269,8 +352,9 @@
     // header interactions
     initThemeToggle();
     initLangToggle();
-    initMenuToggle();
-    initCookieBanner();
+      initMenuToggle();
+      initCookieConsent();
+      initCardAnimations();
 
     // gallery
     initGallery();
