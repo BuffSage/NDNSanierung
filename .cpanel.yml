@@ -1,4 +1,3 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=${HOME}/public_html
-    - /bin/rsync -av --delete dist/ $DEPLOYPATH
+    - /bin/rsync -av --delete dist/ /home/yondevco/ndnsanierung.de/
