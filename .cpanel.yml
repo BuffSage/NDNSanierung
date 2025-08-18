@@ -1,7 +1,5 @@
 ---
 deployment:
   tasks:
-    - /usr/bin/git reset --hard HEAD
-    - /usr/bin/git clean -fd
-    - export DEPLOYPATH="/home/yondevco/public_html"
-    - /bin/rsync -av --delete dist/ "$DEPLOYPATH/"
+    - export DEPLOYPATH=/home/yondevco/ndnsanierung.de
+    - /bin/cp -R ./* $DEPLOYPATH
