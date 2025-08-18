@@ -254,10 +254,10 @@
       if (!carousel) return;
 
       const images = [
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO8m2WkAAAAASUVORK5CYII=',
+        '/src/assets/asbest1.png',
+        '/src/assets/asbest2.png',
+        '/src/assets/asbest3.png',
+        '/src/assets/asbest4.png',
       ];
 
       let idx = 0;
