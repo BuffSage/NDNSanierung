@@ -254,10 +254,10 @@
       if (!carousel) return;
 
       const images = [
-        '/src/assets/asbest1.png',
-        '/src/assets/asbest2.png',
-        '/src/assets/asbest3.png',
-        '/src/assets/asbest4.png',
+        'src/assets/asbest1.png',
+        'src/assets/asbest2.png',
+        'src/assets/asbest3.png',
+        'src/assets/asbest4.png',
       ];
 
       let idx = 0;
@@ -345,6 +345,28 @@
       });
     }
 
+    function initRevealOnScroll() {
+      const els = $$('.reveal');
+      if (!els.length) return;
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      els.forEach((el) => io.observe(el));
+    }
+
+    function updateAddress() {
+      const addr = 'Endertstraße 1, 56812 Cochem';
+      $$('.address').forEach((el) => (el.textContent = addr));
+    }
+
   function init() {
     // language (also updates footer year)
     setLang(currentLang());
@@ -355,6 +377,8 @@
       initMenuToggle();
       initCookieConsent();
       initCardAnimations();
+      initRevealOnScroll();
+      updateAddress();
 
     // gallery
     initGallery();

@@ -142,6 +142,11 @@ html.light .desktop-nav a:hover { background: rgba(0,0,0,0.04); }
 .content-header h1, .content-header h2 { margin: 0 0 8px; }
 .red-line { height: 4px; background: var(--accent); border: none; width: 80px; border-radius: 2px; }
 .center-page .content-header { text-align: center; }
+.content-header.services-header h1 { font-size: 2.4rem; }
+
+/* --- Reveal Animation --- */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in-view { opacity: 1; transform: none; }
 
 /* --- Services / Text Blocks --- */
 .service-section {
@@ -158,7 +163,7 @@ html.light .desktop-nav a:hover { background: rgba(0,0,0,0.04); }
 .center-page .service-section ul { display: inline-block; text-align: left; }
 
 /* --- Gallery --- */
-.gallery { margin-top: 32px; }
+.gallery { margin-top: 32px; margin-bottom: 48px; }
   .carousel {
     position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #000;
     border: 1px solid var(--border);
@@ -207,6 +212,10 @@ html.light .dot { border-color: rgba(0,0,0,.3); background: rgba(0,0,0,.15); }
 }
 .contact-form input:focus, .contact-form textarea:focus {
   outline: none; box-shadow: 0 0 0 2px var(--accent); border-color: transparent;
+}
+html.dark .contact-form input, html.dark .contact-form textarea {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
 }
 
 /* >>> Improved Contact Bubble with thicker, refined frame (dark baseline) <<< */
