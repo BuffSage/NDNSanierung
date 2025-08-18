@@ -20,11 +20,11 @@
           'Asbest- und Schadstoffsanierung mit Zertifizierung (TRGS 519). Sicher. Schnell. Fachgerecht.',
         cta_services: 'Zu den Leistungen',
         cta_contact: 'Kontakt aufnehmen',
-        point1: 'Asbestsanierung gemäß TRGS 519.',
+        point1: 'Asbestsanierung gemäß TRGS 519. Wir kümmern uns um Planung, Durchführung und Entsorgung.',
         point2_title: 'Schnell vor Ort',
-        point2: 'Flexible Terminvereinbarung.',
+        point2: 'Flexible Terminvereinbarung. Unser Team ist kurzfristig einsatzbereit.',
         point3_title: 'Erfahrung',
-        point3: 'Qualifiziertes Fachpersonal.',
+        point3: 'Qualifiziertes Fachpersonal. Profitieren Sie von jahrelanger Erfahrung.',
       },
       leistungen: {
         title: 'Unsere Fachleistungen im Detail',
@@ -72,11 +72,11 @@
           'Certified asbestos and hazardous material remediation (TRGS 519). Safe. Fast. Professional.',
         cta_services: 'View Services',
         cta_contact: 'Contact Us',
-        point1: 'Asbestos remediation according to TRGS 519.',
+        point1: 'Asbestos remediation according to TRGS 519. We handle planning, execution and disposal.',
         point2_title: 'Quick on Site',
-        point2: 'Flexible scheduling.',
+        point2: 'Flexible scheduling. Our team is ready at short notice.',
         point3_title: 'Experience',
-        point3: 'Qualified specialists.',
+        point3: 'Qualified specialists. Benefit from years of hands-on experience.',
       },
       leistungen: {
         title: 'Our Professional Services in Detail',
@@ -182,10 +182,29 @@
     });
   }
 
-  function normalizeUberUnsLinks() {
-    $$('a[href$="ueber-uns.html"]').forEach((a) => {
-      a.href = a.href.replace('ueber-uns.html', 'uber-uns.html');
+  function initCookieBanner() {
+    try {
+      if (localStorage.getItem('cookieAccepted')) return;
+    } catch (_) {}
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    const msg = document.createElement('p');
+    msg.textContent =
+      currentLang() === 'de'
+        ? 'Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern.'
+        : 'This website uses cookies to enhance your experience.';
+    const btn = document.createElement('button');
+    btn.className = 'btn primary';
+    btn.textContent = 'OK';
+    btn.addEventListener('click', () => {
+      banner.remove();
+      try {
+        localStorage.setItem('cookieAccepted', 'yes');
+      } catch (_) {}
     });
+    banner.appendChild(msg);
+    banner.appendChild(btn);
+    document.body.appendChild(banner);
   }
 
   function initGallery() {
@@ -251,9 +270,7 @@
     initThemeToggle();
     initLangToggle();
     initMenuToggle();
-
-    // fix links
-    normalizeUberUnsLinks();
+    initCookieBanner();
 
     // gallery
     initGallery();
