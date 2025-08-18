@@ -258,6 +258,7 @@
         '/src/assets/asbest2.png',
         '/src/assets/asbest3.png',
         '/src/assets/asbest4.png',
+
       ];
 
       let idx = 0;
