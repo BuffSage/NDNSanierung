@@ -1,3 +1,5 @@
+---
 deployment:
   tasks:
-    - /bin/rsync -av --delete dist/ /home/yondevco/ndnsanierung.de/
+    - export DEPLOYPATH=/home/yondevco/ndnsanierung.de
+    - /bin/cp -R ./* $DEPLOYPATH
