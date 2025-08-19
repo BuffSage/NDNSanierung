@@ -254,10 +254,9 @@
       if (!carousel) return;
 
       const images = [
-        '/src/assets/asbest1.png',
-        '/src/assets/asbest2.png',
-        '/src/assets/asbest3.png',
-        '/src/assets/asbest4.png',
+        '/src/assets/cons1.jpg',
+        '/src/assets/cons2.jpg',
+        '/src/assets/cons4.jpg',
       ];
 
       let idx = 0;
