@@ -260,7 +260,7 @@
       banner
         .querySelector('#cookieReject')
         .addEventListener('click', () => {
-          storeConsent({ essential: true });
+          storeConsent({ essential: true, analytics: false, marketing: false });
         });
 
       banner
@@ -305,76 +305,77 @@
       const carousel = $('#asbestCarousel');
       if (!carousel) return;
 
-      const images = [
-        '/src/assets/cons1.jpg',
-        '/src/assets/cons2.jpg',
-        '/src/assets/cons4.jpg',
-      ];
+      const imgs = Array.from(carousel.querySelectorAll('img')).map((img) => ({
+        src: img.getAttribute('src'),
+        alt: img.getAttribute('alt') || ''
+      }));
+
+      if (imgs.length === 0) return;
+
+      carousel.innerHTML = '';
 
       let idx = 0;
       let timer;
 
-      function render() {
-        carousel.innerHTML = '';
-        images.forEach((src, i) => {
+      function buildStructure() {
+        imgs.forEach(({ src, alt }, i) => {
           const slide = document.createElement('div');
           slide.className = 'slide' + (i === idx ? ' active' : '');
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt =
-            (currentLang() === 'de' ? 'Asbest Galerie Bild ' : 'Asbestos gallery image ') +
-            (i + 1);
-          slide.appendChild(img);
+          const image = document.createElement('img');
+          image.src = src;
+          image.alt = alt || (currentLang() === 'de'
+            ? `Asbest Galerie Bild ${i + 1}`
+            : `Asbestos gallery image ${i + 1}`);
+          slide.appendChild(image);
           carousel.appendChild(slide);
         });
-        const navPrev = document.createElement('button');
-        navPrev.className = 'arrow prev';
-        navPrev.innerHTML = '&#10094;';
-        navPrev.addEventListener('click', () => {
-          idx = (idx - 1 + images.length) % images.length;
-          update();
-        });
-        const navNext = document.createElement('button');
-        navNext.className = 'arrow next';
-        navNext.innerHTML = '&#10095;';
-        navNext.addEventListener('click', () => {
-          idx = (idx + 1) % images.length;
-          update();
-        });
-        carousel.appendChild(navPrev);
-        carousel.appendChild(navNext);
+
+        const prev = document.createElement('button');
+        prev.className = 'arrow prev';
+        prev.innerHTML = '&#10094;';
+        prev.addEventListener('click', () => show(idx - 1));
+        const next = document.createElement('button');
+        next.className = 'arrow next';
+        next.innerHTML = '&#10095;';
+        next.addEventListener('click', () => show(idx + 1));
+        carousel.appendChild(prev);
+        carousel.appendChild(next);
 
         const dots = document.createElement('div');
         dots.className = 'dots';
-        images.forEach((_, i) => {
-          const b = document.createElement('button');
-          b.className = 'dot' + (i === idx ? ' active' : '');
-          b.setAttribute(
+        imgs.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (i === idx ? ' active' : '');
+          dot.setAttribute(
             'aria-label',
             (currentLang() === 'de' ? 'Bild ' : 'Slide ') + (i + 1)
           );
-          b.addEventListener('click', () => {
-            idx = i;
-            update();
-          });
-          dots.appendChild(b);
+          dot.addEventListener('click', () => show(i));
+          dots.appendChild(dot);
         });
         carousel.appendChild(dots);
       }
 
-      function update() {
-        const slides = $$('.slide', carousel);
-        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-        $$('.dot', carousel).forEach((d, i) => d.classList.toggle('active', i === idx));
-        clearInterval(timer);
-        timer = setInterval(() => {
-          idx = (idx + 1) % images.length;
-          update();
-        }, 3000);
+      function show(n) {
+        idx = (n + imgs.length) % imgs.length;
+        update();
       }
 
-      render();
-      update();
+      function update() {
+        $$('.slide', carousel).forEach((s, i) => s.classList.toggle('active', i === idx));
+        $$('.dot', carousel).forEach((d, i) => d.classList.toggle('active', i === idx));
+        restart();
+      }
+
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(() => show(idx + 1), 3000);
+      }
+
+      buildStructure();
+      restart();
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', restart);
     }
 
     function initCardAnimations() {

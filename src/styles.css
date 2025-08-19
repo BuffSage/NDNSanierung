@@ -87,17 +87,40 @@ html.light .desktop-nav a:hover { background: rgba(0,0,0,0.04); }
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--card);
-  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: #1b1d1f;
+  color: #fff;
   padding: 16px;
   z-index: 1000;
 }
-.cookie-banner p { margin: 0 0 8px; }
+html.light .cookie-banner {
+  background: #f5f5f5;
+  color: #101113;
+  border-top: 1px solid var(--border);
+}
+.cookie-banner p {
+  flex: 1 1 auto;
+  margin: 0;
+}
 .cookie-banner .cookie-actions {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+  flex: 0 0 auto;
   margin-top: 0;
+}
+.cookie-banner .btn {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+.cookie-banner .btn.primary {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
 }
 
 .cookie-modal {
