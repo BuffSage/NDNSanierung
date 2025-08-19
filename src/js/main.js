@@ -187,8 +187,32 @@
         if (localStorage.getItem('cookieConsent')) return;
       } catch (_) {}
 
+      const policyHref = currentLang() === 'de' ? '/datenschutz.html' : '/en/datenschutz.html';
+
+      const banner = document.createElement('div');
+      banner.className = 'cookie-banner';
+      banner.innerHTML = `
+        <p>${
+          currentLang() === 'de'
+            ? `Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Mehr dazu in unserer <a href="${policyHref}">Datenschutzerkl\u00e4rung</a>.`
+            : `We use cookies to improve your experience. See our <a href="${policyHref}">Privacy Policy</a>.`
+        }</p>
+        <div class="cookie-actions">
+          <button class="btn" id="cookieReject">${
+            currentLang() === 'de' ? 'Alle ablehnen' : 'Reject all'
+          }</button>
+          <button class="btn" id="cookieSettings">${
+            currentLang() === 'de' ? 'Einstellungen' : 'Settings'
+          }</button>
+          <button class="btn primary" id="cookieAccept">${
+            currentLang() === 'de' ? 'Alle akzeptieren' : 'Accept all'
+          }</button>
+        </div>
+      `;
+
       const overlay = document.createElement('div');
       overlay.className = 'cookie-modal';
+      overlay.style.display = 'none';
       overlay.innerHTML = `
         <div class="cookie-box">
           <h2>${currentLang() === 'de' ? 'Cookie-Einstellungen' : 'Cookie Settings'}</h2>
@@ -212,7 +236,7 @@
             <button class="btn" id="cookieSave">${
               currentLang() === 'de' ? 'Speichern' : 'Save'
             }</button>
-            <button class="btn primary" id="cookieAccept">${
+            <button class="btn primary" id="cookieAcceptAll">${
               currentLang() === 'de' ? 'Alle akzeptieren' : 'Accept all'
             }</button>
           </div>
@@ -223,11 +247,31 @@
         try {
           localStorage.setItem('cookieConsent', JSON.stringify(consent));
         } catch (_) {}
+        banner.remove();
         overlay.remove();
       }
 
-      overlay
+      banner
         .querySelector('#cookieAccept')
+        .addEventListener('click', () => {
+          storeConsent({ essential: true, analytics: true, marketing: true });
+        });
+
+      banner
+        .querySelector('#cookieReject')
+        .addEventListener('click', () => {
+          storeConsent({ essential: true });
+        });
+
+      banner
+        .querySelector('#cookieSettings')
+        .addEventListener('click', () => {
+          overlay.style.display = 'flex';
+          banner.style.display = 'none';
+        });
+
+      overlay
+        .querySelector('#cookieAcceptAll')
         .addEventListener('click', () => {
           storeConsent({ essential: true, analytics: true, marketing: true });
         });
@@ -246,6 +290,14 @@
           storeConsent(consent);
         });
 
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+          banner.style.display = '';
+        }
+      });
+
+      document.body.appendChild(banner);
       document.body.appendChild(overlay);
     }
 
