@@ -4,23 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NDN Sanierung – Über Uns</title>
-  <link rel="icon" href="/src/assets/logo.png">
+  <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
   <link rel="stylesheet" href="/src/styles.css">
   <style>
-    .about-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
-    @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
-
+    .about-grid { display:grid; gap:24px; grid-template-columns:1fr; }
+    @media (min-width:900px){ .about-grid{ grid-template-columns:1fr 1fr; } }
     .about-card {
+      position:relative;
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:24px;
+      overflow:hidden;
+      box-shadow:0 10px 20px rgba(0,0,0,0.15);
+      transition:transform .3s ease, box-shadow .3s ease;
     }
-
-    /* >>> Tight bullets so text sits right next to bullets (no extra left spacing) <<< */
-    .bullet-tight { list-style: disc inside; padding-left: 0; margin: 0; }
-    .bullet-tight li { margin: 4px 0; line-height: 1.35; text-indent: 0; }
+    .about-card::before{
+      content:"";position:absolute;inset:-50%;background:radial-gradient(circle at top left,var(--accent),transparent 70%);
+      opacity:0;transition:opacity .4s;pointer-events:none;
+    }
+    .about-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.25);}
+    .about-card:hover::before{opacity:.25;}
+    .about-card.reveal{opacity:0;transform:translateY(40px) scale(.95);}
+    .about-card.reveal.in-view{animation:cardIn .8s ease forwards;}
+    .about-card.reveal:nth-of-type(1){animation-delay:.1s;}
+    .about-card.reveal:nth-of-type(2){animation-delay:.2s;}
+    .about-card.reveal:nth-of-type(3){animation-delay:.3s;}
+    @keyframes cardIn{to{opacity:1;transform:none;}}
+    .bullet-tight{list-style:disc inside;padding-left:0;margin:0;}
+    .bullet-tight li{margin:4px 0;line-height:1.35;text-indent:0;}
   </style>
+  
   <script>
     (function(){
       try {
@@ -38,7 +52,7 @@
 <header class="app-header">
   <div class="container navbar">
     <a href="/index.html" class="logo">
-      <img class="logo-img" src="/src/assets/logo.png" alt="NDN Logo">
+      <img class="logo-img" src="https://via.placeholder.com/200x50?text=NDN+Logo" alt="NDN Logo">
       <div class="logo-text">NDN Sanierung</div>
     </a>
     <nav class="desktop-nav">
