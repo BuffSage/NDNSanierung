@@ -305,10 +305,20 @@
       const carousel = $('#asbestCarousel');
       if (!carousel) return;
 
-      const imgs = Array.from(carousel.querySelectorAll('img')).map((img) => ({
-        src: img.getAttribute('src'),
-        alt: img.getAttribute('alt') || ''
-      }));
+      let imgs = [];
+      const data = carousel.getAttribute('data-images');
+      if (data) {
+        try {
+          imgs = JSON.parse(data).map(src => ({ src, alt: '' }));
+        } catch (_) {
+          imgs = data.split(',').map(s => ({ src: s.trim(), alt: '' }));
+        }
+      } else {
+        imgs = Array.from(carousel.querySelectorAll('img')).map(img => ({
+          src: img.getAttribute('src'),
+          alt: img.getAttribute('alt') || ''
+        }));
+      }
 
       if (imgs.length === 0) return;
 
