@@ -222,41 +222,6 @@ html.light .cookie-banner {
 .center-page .service-section { text-align: center; }
 .center-page .service-section ul { display: inline-block; text-align: left; }
 
-/* --- Gallery --- */
-.gallery { margin-top: 32px; margin-bottom: 48px; }
-  .carousel {
-    position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #000;
-    border: 1px solid var(--border);
-  }
-.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease-in-out; }
-.slide.active { opacity: 1; }
-.slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.dots { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,.6); background: rgba(255,255,255,.4); }
-html.light .dot { border-color: rgba(0,0,0,.3); background: rgba(0,0,0,.15); }
-  .dot.active { background: var(--accent); border-color: var(--accent); }
-
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
-    cursor: pointer;
-    opacity: 0.7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity .2s;
-  }
-  .arrow:hover { opacity: 1; }
-  .arrow.prev { left: 10px; }
-  .arrow.next { right: 10px; }
-  html.light .arrow { background: rgba(255,255,255,0.6); color: #000; }
 
 /* --- Map --- */
 .map-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }

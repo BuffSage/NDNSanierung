@@ -309,90 +309,16 @@
     }
 
     function initGallery() {
-      const carousel = $('#asbestCarousel');
-      if (!carousel) return;
+      const slider = $('.image-gallery-slider');
+      if (!slider || typeof Swiper === 'undefined') return;
 
-      let imgs = [];
-      const data = carousel.getAttribute('data-images');
-      if (data) {
-        try {
-          imgs = JSON.parse(data).map(src => ({ src, alt: '' }));
-        } catch (_) {
-          imgs = data.split(',').map(s => ({ src: s.trim(), alt: '' }));
-        }
-      } else {
-        imgs = Array.from(carousel.querySelectorAll('img')).map(img => ({
-          src: img.getAttribute('src'),
-          alt: img.getAttribute('alt') || ''
-        }));
-      }
-
-      if (imgs.length === 0) return;
-
-      carousel.innerHTML = '';
-
-      let idx = 0;
-      let timer;
-
-      function buildStructure() {
-        imgs.forEach(({ src, alt }, i) => {
-          const slide = document.createElement('div');
-          slide.className = 'slide' + (i === idx ? ' active' : '');
-          const image = document.createElement('img');
-          image.src = src;
-          image.alt = alt || (currentLang() === 'de'
-            ? `Asbest Galerie Bild ${i + 1}`
-            : `Asbestos gallery image ${i + 1}`);
-          slide.appendChild(image);
-          carousel.appendChild(slide);
-        });
-
-        const prev = document.createElement('button');
-        prev.className = 'arrow prev';
-        prev.innerHTML = '&#10094;';
-        prev.addEventListener('click', () => show(idx - 1));
-        const next = document.createElement('button');
-        next.className = 'arrow next';
-        next.innerHTML = '&#10095;';
-        next.addEventListener('click', () => show(idx + 1));
-        carousel.appendChild(prev);
-        carousel.appendChild(next);
-
-        const dots = document.createElement('div');
-        dots.className = 'dots';
-        imgs.forEach((_, i) => {
-          const dot = document.createElement('button');
-          dot.className = 'dot' + (i === idx ? ' active' : '');
-          dot.setAttribute(
-            'aria-label',
-            (currentLang() === 'de' ? 'Bild ' : 'Slide ') + (i + 1)
-          );
-          dot.addEventListener('click', () => show(i));
-          dots.appendChild(dot);
-        });
-        carousel.appendChild(dots);
-      }
-
-      function show(n) {
-        idx = (n + imgs.length) % imgs.length;
-        update();
-      }
-
-      function update() {
-        $$('.slide', carousel).forEach((s, i) => s.classList.toggle('active', i === idx));
-        $$('.dot', carousel).forEach((d, i) => d.classList.toggle('active', i === idx));
-        restart();
-      }
-
-      function restart() {
-        clearInterval(timer);
-        timer = setInterval(() => show(idx + 1), 3000);
-      }
-
-      buildStructure();
-      restart();
-      carousel.addEventListener('mouseenter', () => clearInterval(timer));
-      carousel.addEventListener('mouseleave', restart);
+      new Swiper(slider, {
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
     }
 
     function initCardAnimations() {
