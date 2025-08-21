@@ -1,6 +1,6 @@
 Image files expected in src/assets/images:
 - favicon.ico
-- logo.png
+- NDNLogo.jpg
 - header-hero.png
 - cons1.jpg
 - cons2.jpg
