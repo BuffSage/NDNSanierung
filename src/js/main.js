@@ -187,7 +187,14 @@
         if (localStorage.getItem('cookieConsent')) return;
       } catch (_) {}
 
-      const policyHref = currentLang() === 'de' ? '/datenschutz.html' : '/en/datenschutz.html';
+      const inEn = location.pathname.includes('/en/');
+      const policyHref = inEn
+        ? currentLang() === 'de'
+          ? '../datenschutz.html'
+          : 'datenschutz.html'
+        : currentLang() === 'de'
+          ? 'datenschutz.html'
+          : 'en/datenschutz.html';
 
       const banner = document.createElement('div');
       banner.className = 'cookie-banner';
