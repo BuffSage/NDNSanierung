@@ -182,6 +182,7 @@ html.light .cookie-banner {
 .content-header { margin: 32px 0 12px; text-align: left; }
 .content-header h1, .content-header h2 { margin: 0 0 8px; }
 .red-line { height: 4px; background: var(--accent); border: none; width: 80px; border-radius: 2px; }
+.card .red-line { align-self: center; }
 .center-page .content-header { text-align: center; }
 .content-header.services-header h1 { font-size: 2.4rem; }
 
