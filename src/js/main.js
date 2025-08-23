@@ -359,7 +359,7 @@
     }
 
     function updateAddress() {
-      const addr = 'Endertstraße 1, 56812 Cochem';
+      const addr = 'Endertstraße 31, 56812 Cochem';
       $$('.address').forEach((el) => (el.textContent = addr));
     }
 
